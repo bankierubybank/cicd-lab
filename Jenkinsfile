@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker build -t cicd-lab:latest .'
+                sh 'docker build -t cicd-lab:$BUILD_NUMBER .'
                 sh 'docker images'
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         cleanup {
             // Remove workspace
             cleanWs()
-            sh 'docker rmi cicd-lab:latest'
+            sh 'docker rmi cicd-lab:$BUILD_NUMBER'
         }
     }
 }

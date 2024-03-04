@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker build -t cicd-lab:$BUILD_NUMBER .'
+                sh 'docker build -t $JOB_BASE_NAME:$BUILD_NUMBER .'
             }
         }
         stage('Deploy') {
@@ -35,7 +35,7 @@ pipeline {
         cleanup {
             // Remove workspace
             cleanWs()
-            sh 'docker rmi cicd-lab:$BUILD_NUMBER'
+            sh 'docker rmi $JOB_BASE_NAME:$BUILD_NUMBER'
         }
     }
 }

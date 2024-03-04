@@ -15,7 +15,7 @@ def index():
 def api():
     headers = {"Content-Type": "application/json"}
     return make_response(
-        'Test worked!',
+        'OK!',
         200,
         headers=headers
     )
